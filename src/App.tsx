@@ -1,12 +1,20 @@
 import React from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import About from "./components/About";
 import data from "./data/data.json";
 
 const App: React.FC = () => {
   return (
     <div className="min-h-screen font-roboto bg-[#C7D3E8]">
       <Header hero={data.hero} />
+      <main className="container flex flex-col items-center mx-auto px-4 mt-8">
+        <About
+          {...data.about}
+          programDetails={data.programDetails}
+          courses={data.courses}
+        />
+      </main>
       <Footer/>
     </div>
   );
