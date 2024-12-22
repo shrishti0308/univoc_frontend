@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import About from "./components/About";
+import Benefits from "./components/Benefits";
 import data from "./data/data.json";
 
 const App: React.FC = () => {
@@ -14,6 +15,7 @@ const App: React.FC = () => {
           programDetails={data.programDetails}
           courses={data.courses}
         />
+        <Benefits benefits={data.benefits} />
       </main>
       <Footer/>
     </div>
