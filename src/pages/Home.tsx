@@ -13,8 +13,8 @@ type CourseData = {
   programDetails: any;
   courses: any[];
   benefits: any;
-  jobRoles: any[];
-  relatedCourses: any[];
+  jobRoles: string[];
+  relatedCourses: Array<{ title: string; rating: number; image: string }>;
 };
 
 const Home: React.FC = () => {
@@ -27,7 +27,7 @@ const Home: React.FC = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`/courses`);
+        const response = await axios.get('/courses');
         setData(response.data[0]);
       } catch (error) {
         console.error("Error fetching data", error);
@@ -61,8 +61,8 @@ const Home: React.FC = () => {
             />
             <Benefits benefits={data?.benefits} />
             <JobRolesAndCourses
-              jobRoles={data?.jobRoles}
-              relatedCourses={data?.relatedCourses}
+              jobRoles={data?.jobRoles || []}
+              relatedCourses={data?.relatedCourses || []}
             />
             <ContactForm />
           </main>
@@ -73,4 +73,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Home;
