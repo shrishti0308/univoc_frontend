@@ -1,7 +1,13 @@
-export default function App() {
+import React from "react";
+import Header from "./components/Header";
+import data from "./data/data.json";
+
+const App: React.FC = () => {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
-}
+    <div className="min-h-screen font-roboto bg-[#C7D3E8]">
+      <Header hero={data.hero} />
+    </div>
+  );
+};
+
+export default App;
