@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import Benefits from "./components/Benefits";
+import ContactForm from "./components/ContactForm";
 import data from "./data/data.json";
 
 const App: React.FC = () => {
@@ -16,6 +17,7 @@ const App: React.FC = () => {
           courses={data.courses}
         />
         <Benefits benefits={data.benefits} />
+        <ContactForm />
       </main>
       <Footer/>
     </div>
