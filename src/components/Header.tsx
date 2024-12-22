@@ -163,18 +163,18 @@ import {
             </div>
           )}
         </div>
-        <Hero hero={hero} />
+        <Hero {...hero} />
       </header>
     );
   };
   
-  const Hero: React.FC<HeroProps> = ({ hero }) => {
+  const Hero: React.FC<HeroProps> = ({ title, breadcrumbs, rating }) => {
     return (
       <div className="bg-[url('/images/hero-bg.png')] bg-full relative h-[400px] flex flex-col justify-center pl-8 md:pl-12">
         <div className="absolute right-0 z-0 bg-[url('/images/hero.png')] bg-no-repeat bg-right h-full w-full filter blur-[3px]" />
         <div className="z-10 text-white">
           <nav className="text-sm md:text-base mb-4">
-            {hero.breadcrumbs.map((item, index) => (
+            {breadcrumbs.map((item: string, index: number) => (
               <span key={index}>
                 <a href="#" className="hover:text-blue-500">
                   {item}
@@ -183,10 +183,10 @@ import {
               </span>
             ))}
           </nav>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-4">{hero.title}</h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-4">{title}</h1>
           <div className="flex items-center">
-            <Rating rating={hero.rating} />
-            <span className="ml-4">{hero.rating}</span>
+            <Rating rating={rating} />
+            <span className="ml-4">{rating}</span>
           </div>
         </div>
       </div>
@@ -194,4 +194,3 @@ import {
   };
   
   export default Header;
-  

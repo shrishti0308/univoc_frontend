@@ -217,13 +217,11 @@ const ContactForm: React.FC = () => {
 
             <div className="w-full drop-shadow-sm">
               <PhoneInput
-                id="phone"
                 placeholder="Phone Number*"
                 value={formData.phone}
                 defaultCountry="in"
                 required
                 onChange={handlePhoneChange}
-                containerClassName="w-full"
                 inputClassName="w-full"
               />
             </div>
