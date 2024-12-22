@@ -1,31 +1,36 @@
 import React from "react";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import About from "./components/About";
-import Benefits from "./components/Benefits";
-import ContactForm from "./components/ContactForm";
-import JobRolesAndCourses from "./components/JobRolesAndCourses";
-import data from "./data/data.json";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { Button } from "./components/ui/button";
+import { AuthProvider } from "./context/AuthContext";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen font-roboto bg-[#C7D3E8]">
-      <Header hero={data.hero} />
-      <main className="container flex flex-col items-center mx-auto px-4 mt-8">
-        <About
-          {...data.about}
-          programDetails={data.programDetails}
-          courses={data.courses}
-        />
-        <Benefits benefits={data.benefits} />
-        <JobRolesAndCourses
-          jobRoles={data.jobRoles}
-          relatedCourses={data.relatedCourses}
-        />
-        <ContactForm />
-      </main>
-      <Footer/>
-    </div>
+    <AuthProvider>
+      <Router>
+        {window.location.pathname !== "/home" && (
+          <div className="flex items-center justify-center gap-4 p-4">
+            <Button onClick={() => window.location.replace("/login")}>Login</Button>
+            <Button onClick={() => window.location.replace("/signup")}>Signup</Button>
+          </div>
+        )}
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 };
 

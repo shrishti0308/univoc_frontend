@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
     Accordion,
     AccordionContent,
@@ -44,7 +45,16 @@ import {
   
   const Header: React.FC<HeaderProps> = ({ hero }) => {
     const [isOpen, setIsOpen] = useState(false);
-  
+    const navigate = useNavigate();
+
+    const handlelogin = () => {
+        navigate('/login');
+    }
+
+    const handleSignup = () => {
+        navigate('/signup');
+    }
+
     return (
       <header className="bg-white shadow-md max-w-[90%] mx-auto border-2 border-blue-400 rounded-t-xl rounded-b-[6rem] overflow-hidden">
         <div className="mx-auto px-4 py-4 bg-gradient-to-r from-blue-200">
@@ -91,12 +101,14 @@ import {
               <Button
                 variant="outline"
                 className="rounded-full border-2 border-blue-400 hover:text-white hover:bg-gradient-to-r from-blue-700 to-sky-400 transition-all duration-300"
+                onClick={handlelogin}
               >
                 Sign in
               </Button>
               <Button
                 variant="default"
                 className="rounded-full bg-gradient-to-r from-blue-700 to-sky-400"
+                onClick={handleSignup}
               >
                 Register for free
               </Button>
@@ -153,10 +165,10 @@ import {
                   </div>
                   <Navigation className="text-gray-600" />
                 </div>
-                <Button variant="outline" className="w-full font-normal text-lg rounded-full border-2 border-blue-400 hover:text-white hover:bg-gradient-to-r from-blue-700 to-sky-400 transition-all duration-300">
+                <Button variant="outline" className="w-full font-normal text-lg rounded-full border-2 border-blue-400 hover:text-white hover:bg-gradient-to-r from-blue-700 to-sky-400 transition-all duration-300" onClick={handlelogin}>
                   Sign in
                 </Button>
-                <Button className="w-full font-normal text-lg rounded-full bg-gradient-to-r from-blue-700 to-sky-400">
+                <Button className="w-full font-normal text-lg rounded-full bg-gradient-to-r from-blue-700 to-sky-400" onClick={handleSignup}>
                   Register for free
                 </Button>
               </div>
