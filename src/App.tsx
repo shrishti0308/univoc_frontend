@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import About from "./components/About";
 import Benefits from "./components/Benefits";
 import ContactForm from "./components/ContactForm";
+import JobRolesAndCourses from "./components/JobRolesAndCourses";
 import data from "./data/data.json";
 
 const App: React.FC = () => {
@@ -17,6 +18,10 @@ const App: React.FC = () => {
           courses={data.courses}
         />
         <Benefits benefits={data.benefits} />
+        <JobRolesAndCourses
+          jobRoles={data.jobRoles}
+          relatedCourses={data.relatedCourses}
+        />
         <ContactForm />
       </main>
       <Footer/>
